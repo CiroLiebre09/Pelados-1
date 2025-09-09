@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
   seleccionarCantidadGustos,
   ingresarCliente,
@@ -7,9 +8,10 @@ import {
 
 // Cargar sabores y productos
 // COMPLETEN USTEDES
-let sabores;
-let productos;
-
+let sabores = fs.readFileSync("data/sabores.json", "utf-8");
+let productos = fs.readFileSync("data/productos.json", "utf-8");
+sabores = JSON.parse(sabores);
+productos = JSON.parse(productos);
 // Ingresar cliente
 let cliente = ingresarCliente();
 // Elegir producto
