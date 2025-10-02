@@ -10,8 +10,8 @@ import {
 // COMPLETEN USTEDES
 let sabores = fs.readFileSync("data/sabores.json", "utf-8");
 let productos = fs.readFileSync("data/productos.json", "utf-8");
-sabores = JSON.parse(sabores);
 productos = JSON.parse(productos);
+sabores = JSON.parse(sabores);
 // Ingresar cliente
 let cliente = ingresarCliente();
 // Elegir producto
@@ -22,4 +22,7 @@ let gustos = seleccionarCantidadGustos(producto.maxGustos);
 let saboresElegidos = seleccionarSabores(sabores, gustos);
 
 // Guardar pedido
+let pedidoJSON = {nombre: cliente, producto: producto, saboresElegidos: saboresElegidos};
+pedidoJSON = JSON.stringify(pedidoJSON, null, 2);
+fs.writeFileSync("data/pedidos.json", pedidoJSON);
 // COMPLETEN USTEDES
